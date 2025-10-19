@@ -185,7 +185,8 @@
             <span class="block font-semibold text-sm text-gray-800">
               {{ items.title?.length > 15 ? items.title.substring(0, 15) + '...' : items.title }}
             </span>
-            <span class="block text-xs text-gray-500 mt-1">{{ items.chapter || 'Chapter tidak tersedia' }}</span>
+            <span class="text-xs">Rating: ⭐{{items.rating }}</span>
+            <span class="block text-xs text-gray-500 mt-1">{{ items.latestChapter || 'Chapter tidak tersedia' }}</span>
           </div>
         </div>
       </main>

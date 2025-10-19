@@ -135,6 +135,14 @@
                 Artist:
                 <span class="font-medium text-black">{{ comic.artist }}</span>
               </p>
+              <p class="text-gray-600 mb-1">
+                Released:
+                <span class="font-medium text-black">{{ comic.released }}</span>
+              </p>
+              <p class="text-gray-600 mb-1">
+                Rating:
+                <span class="font-medium text-black">⭐{{ comic.rating }}</span>
+              </p>
             </div>
           </div>
     
@@ -152,7 +160,7 @@
               v-if="comic.chapters && Array.isArray(comic.chapters)"
               class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
             >
-              <div v-for="(ch, i) in comic.chapters" :key="i" @click="openChapter(ch.slug)" class="cursor-pointer flex pl-3 gap-2 bg-gray-200 hover:bg-gray-300 transition rounded-md py-2 text-center font-medium">
+              <div v-for="(ch, i) in comic.chapters" :key="i" @click="openChapter(ch.slug)" class="cursor-pointer flex pl-3 gap-2 bg-gray-200 hover:bg-gray-300 transition rounded-md py-2 font-medium">
                   <img :src="comic.thumb" class="w-10" alt="">
                 <div>
                     <h1>{{ ch.chapter || ch.title }}</h1>
@@ -195,6 +203,7 @@ async function getComicDetail() {
       thumb: data.imageSrc,
       chapters: data.chapters,
       rating: data.rating,
+      released: data.released,
     };
   } catch (err) {
     console.error(err);

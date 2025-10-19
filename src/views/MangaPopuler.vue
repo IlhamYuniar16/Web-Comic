@@ -184,6 +184,7 @@
                     : items.title
                 }}
               </span>
+              <span class="text-xs">Rating: ⭐{{ items.rating }}</span>
               <span class="block text-xs text-gray-500 mt-1">{{
                 items.chapter || "Chapter tidak tersedia"
               }}</span>
