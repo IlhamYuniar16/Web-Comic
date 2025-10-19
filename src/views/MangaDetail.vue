@@ -152,14 +152,13 @@
               v-if="comic.chapters && Array.isArray(comic.chapters)"
               class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
             >
-              <div
-                v-for="(ch, i) in comic.chapters"
-                :key="i"
-                @click="openChapter(ch.slug)"
-                class="cursor-pointer bg-gray-200 hover:bg-gray-300 transition rounded-md py-2 text-center font-medium"
-              >
-                {{ ch.chapter || ch.title || "Tanpa Judul" }}
-              </div>
+              <div v-for="(ch, i) in comic.chapters" :key="i" @click="openChapter(ch.slug)" class="cursor-pointer flex pl-3 gap-2 bg-gray-200 hover:bg-gray-300 transition rounded-md py-2 text-center font-medium">
+                  <img :src="comic.thumb" class="w-10" alt="">
+                <div>
+                    <h1>{{ ch.chapter || ch.title }}</h1>
+                    <span class="text-xs ">{{ ch.date }}</span>
+                </div>
+            </div>
             </div>
             <div v-else class="text-gray-500">Chapter belum tersedia.</div>
           </div>
@@ -195,6 +194,7 @@ async function getComicDetail() {
       description: data.synopsis,
       thumb: data.imageSrc,
       chapters: data.chapters,
+      rating: data.rating,
     };
   } catch (err) {
     console.error(err);
