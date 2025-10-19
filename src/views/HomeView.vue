@@ -203,7 +203,41 @@
   
         <div v-else class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
           <div
-            v-for="(items, index) in searchData.slice(10, 160)"
+            v-for="(items, index) in searchData.slice(10, 50)"
+            :key="index"
+            @click="openPage(items.slug)"
+            class="cursor-pointer bg-gray-50 hover:bg-gray-100 transition rounded-md shadow-sm p-2"
+          >
+            <img
+              :src="items.imageSrc"
+              alt="cover"
+              class="w-full h-56 object-cover rounded-md mb-2"
+            />
+            <span class="block font-semibold text-sm text-gray-800">
+              {{ items.title?.length > 15 ? items.title.substring(0, 15) + '...' : items.title }}
+            </span>
+            <span class="text-xs">Rating: ⭐{{items.rating }}</span>
+            <span class="block text-xs text-gray-500 mt-1">{{ items.chapter || 'Chapter tidak tersedia' }}</span>
+          </div>
+          <div v-if="openLainnya"
+            v-for="(items, index) in searchData.slice(50, 80)"
+            :key="index"
+            @click="openPage(items.slug)"
+            class="cursor-pointer bg-gray-50 hover:bg-gray-100 transition rounded-md shadow-sm p-2"
+          >
+            <img
+              :src="items.imageSrc"
+              alt="cover"
+              class="w-full h-56 object-cover rounded-md mb-2"
+            />
+            <span class="block font-semibold text-sm text-gray-800">
+              {{ items.title?.length > 15 ? items.title.substring(0, 15) + '...' : items.title }}
+            </span>
+            <span class="text-xs">Rating: ⭐{{items.rating }}</span>
+            <span class="block text-xs text-gray-500 mt-1">{{ items.chapter || 'Chapter tidak tersedia' }}</span>
+          </div>
+          <div v-if="openLainnya1"
+            v-for="(items, index) in searchData.slice(80, 160)"
             :key="index"
             @click="openPage(items.slug)"
             class="cursor-pointer bg-gray-50 hover:bg-gray-100 transition rounded-md shadow-sm p-2"
@@ -220,6 +254,12 @@
             <span class="block text-xs text-gray-500 mt-1">{{ items.chapter || 'Chapter tidak tersedia' }}</span>
           </div>
         </div>
+        <button v-if="!openLainnya" class="flex font-bold justify-center mt-10 px-10 py-2 rounded text-white cursor-pointer bg-gray-700" @click="openLain">
+          Lainnya
+        </button>
+        <button v-if="openLainnya">
+          <button v-if="!openLainnya1" class="flex font-bold justify-center mt-10 px-10 py-2 rounded text-white cursor-pointer bg-gray-700" @click="openLain1">Lainnya</button>
+        </button>
       </main>
     </section>
   </section>
@@ -245,6 +285,18 @@ const latestData = ref([])
 const recomData = ref([])
 const weeklyData = ref([])
 const menuOpen = ref(false)
+const openLainnya = ref(false)
+const openLainnya1 = ref(false)
+
+function openLain() {
+  openLainnya.value = !openLainnya.value
+  // openLainnya1.value = true
+}
+
+function openLain1() {
+  // openLainnya.value = false
+  openLainnya1.value = true
+}
 
 function closeMenu() {
   menuOpen.value = false

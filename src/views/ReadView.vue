@@ -1,7 +1,7 @@
 <template>
         <header class="shadow-md bg-white dark:bg-gray-900 dark:text-white transition-all duration-300">
         <main class="flex justify-between items-center p-4 max-w-6xl mx-auto">
-            <main class="flex gap-5 items-center justify-center py-3 dark:bg-gray-900  transition-all duration-300 bg-gray-50 text-sm font-medium text-gray-700">
+            <main class="flex gap-5 items-center justify-center py-3 dark:bg-gray-900  transition-all duration-300  text-sm font-medium text-gray-700">
               <a href="/" class="rounded-md px-4 py-2 bg-gray-200 hover:bg-gray-300 cursor-pointer">Beranda</a>
               <a href="/mangapopuler" class="rounded-md px-4 py-2 bg-gray-200 hover:bg-gray-300 cursor-pointer flex gap-2 items-center">
                 <img class="w-7" src="../assets/img/jepang.webp" alt=""> Manga Populer
